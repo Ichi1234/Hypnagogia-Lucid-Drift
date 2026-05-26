@@ -1,5 +1,3 @@
-using Unity.VisualScripting;
-using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class Snow : MonoBehaviour
@@ -7,7 +5,13 @@ public class Snow : MonoBehaviour
     private void Update()
     {
         Camera mainCamera = Camera.main;
-        transform.LookAt(mainCamera.transform.position);
+
+        Vector3 targetPosition = mainCamera.transform.position;
+
+        targetPosition.y = transform.position.y;
+
+        transform.LookAt(targetPosition);
+
         transform.Rotate(0, 180, 0);
     }
 }
